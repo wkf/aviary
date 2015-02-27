@@ -1,5 +1,7 @@
 # Aviary
 
+[![Join the chat at https://gitter.im/wkf/aviary](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/wkf/aviary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A Clojure library designed to improve your development experience without putting you in a cage. I created it originally to help generate static sites, but it has grown into something with wider application. 
 
 Aviary attempts to tastefully stich together prexisting clojure tools (like http-kit, hawk, and figwheel) to provide a cohesive development environment. It relies on the component library to manage service lifecycle, and comes with a number of prebuilt components to help kickstart initial setup. Since they are "just" components, you can write your own, or use someone else's. 
