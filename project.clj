@@ -23,7 +23,6 @@
                         :test-paths ["src/test"]
                         :source-paths ["src/main"]}}
   :release-tasks [["vcs" "assert-committed"]
-                  ["modules" "install"]
                   ["modules" "test"]
                   ["modules" "change" "version" "leiningen.release/bump-version" "release"]
                   ["change" "version" "leiningen.release/bump-version" "release"]
@@ -33,5 +32,6 @@
                   ["deploy" "clojars"]
                   ["modules" "change" "version" "leiningen.release/bump-version"]
                   ["change" "version" "leiningen.release/bump-version"]
+                  ["modules" "install"]
                   ["vcs" "commit"]
                   ["vcs" "push"]])
