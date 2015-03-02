@@ -12,6 +12,8 @@
   :plugins [[lein-modules "0.3.10"]]
   :modules {:subprocess false
             :versions {aviary :version
+                       aviary/figwheel "0.2.5"
+                       aviary/figwheel-sidecar "0.2.5"
                        org.clojure/clojure "1.6.0"
                        org.clojure/clojurescript "0.0-2850"
                        org.clojure/core.async "0.1.346.0-17112a-alpha"
