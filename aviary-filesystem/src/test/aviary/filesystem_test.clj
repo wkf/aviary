@@ -45,6 +45,7 @@
           temp-b (new-temp-path)
           files #{"test-a/hello.txt"
                   "test-b/hello/gunter.txt"}]
+      (clean temp-b)
       (create-all temp-a files)
       (assert (dir-empty? temp-b))
       (assert (dir-contains? temp-a files))
