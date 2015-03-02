@@ -1,4 +1,4 @@
-(defproject aviary/aviary-figwheel "0.1.1"
+(defproject aviary/aviary-figwheel "0.1.2-SNAPSHOT"
   :description "Aviary figwheel module for compiling clojurescript and reloading assets."
   :url "https://github.com/wkf/aviary"
   :license {:name "Eclipse Public License"

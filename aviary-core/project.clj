@@ -1,4 +1,4 @@
-(defproject aviary/aviary-core "0.1.1"
+(defproject aviary/aviary-core "0.1.2-SNAPSHOT"
   :description "Aviary core module."
   :url "https://github.com/wkf/aviary"
   :license {:name "Eclipse Public License"

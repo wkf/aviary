@@ -1,4 +1,4 @@
-(defproject aviary/aviary-watch "0.1.1"
+(defproject aviary/aviary-watch "0.1.2-SNAPSHOT"
   :description "Aviary watch module (built with hawk)."
   :url "https://github.com/wkf/aviary"
   :license {:name "Eclipse Public License"

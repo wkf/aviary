@@ -1,4 +1,4 @@
-(defproject aviary/aviary-serve "0.1.1"
+(defproject aviary/aviary-serve "0.1.2-SNAPSHOT"
   :description "Aviary module for serving content with http-kit."
   :url "https://github.com/wkf/aviary"
   :license {:name "Eclipse Public License"
