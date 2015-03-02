@@ -17,4 +17,27 @@
                        org.clojure/core.async "0.1.346.0-17112a-alpha"
                        com.stuartsierra/component "0.2.2"}
             :inherited {:test-paths ["src/test"]
-                        :source-paths ["src/main"]}})
+                        :source-paths ["src/main"]}}
+  :release-tasks [["vcs" "assert-committed"]
+                  ["modules"
+                   "change"
+                   "version"
+                   "leiningen.release/bump-version"
+                   "release"]
+                  ["change"
+                   "version"
+                   "leiningen.release/bump-version"
+                   "release"]
+                  ["vcs" "commit"]
+                  ["vcs" "tag"]
+                  ["modules" "deploy" "clojars"]
+                  ["deploy" "clojars"]
+                  ["modules"
+                   "change"
+                   "version"
+                   "leiningen.release/bump-version"]
+                  ["change"
+                   "version"
+                   "leiningen.release/bump-version"]
+                  ["vcs" "commit"]
+                  ["vcs" "push"]])
