@@ -23,6 +23,7 @@
                         :test-paths ["src/test"]
                         :source-paths ["src/main"]}}
   :release-tasks [["vcs" "assert-committed"]
+                  ["modules" "install"]
                   ["modules" "test"]
                   ["modules" "change" "version" "leiningen.release/bump-version" "release"]
                   ["change" "version" "leiningen.release/bump-version" "release"]
