@@ -1,4 +1,4 @@
-(defproject aviary "0.1.1-SNAPSHOT"
+(defproject aviary "0.1.1"
   :description "Static site builder with enough room to fly."
   :url "https://github.com/wkf/aviary"
   :license {:name "Eclipse Public License"
