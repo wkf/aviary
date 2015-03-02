@@ -20,12 +20,12 @@ Some (potentially) interesting Aviary features:
 
 To install, add the following dependency to your `project.clj` file:
 
-    [aviary "0.1.1"]
+    [aviary "0.1.3"]
 
 Alternatively, since aviary is split into modules, you could install just the ones you need. For example, if you were only using aviary to reload clj files as you make changes, you could include just the `aviary-core` and `aviary-watch` modules:
 
-    [aviary/aviary-core "0.1.1"]
-    [aviary/aviary-watch "0.1.1"]
+    [aviary/aviary-core "0.1.3"]
+    [aviary/aviary-watch "0.1.3"]
 
 
 ## Usage
