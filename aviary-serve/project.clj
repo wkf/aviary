@@ -1,8 +1,5 @@
 (defproject aviary/aviary-serve "0.1.2-SNAPSHOT"
   :description "Aviary module for serving content with http-kit."
-  :url "https://github.com/wkf/aviary"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure _]
                  [aviary/aviary-core _]
                  [ring "1.3.2"]

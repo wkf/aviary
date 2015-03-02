@@ -1,8 +1,5 @@
 (defproject aviary "0.1.2-SNAPSHOT"
   :description "Static site builder with enough room to fly."
-  :url "https://github.com/wkf/aviary"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [aviary/aviary-core _]
                  [aviary/aviary-watch _]
@@ -18,29 +15,22 @@
                        org.clojure/clojurescript "0.0-2850"
                        org.clojure/core.async "0.1.346.0-17112a-alpha"
                        com.stuartsierra/component "0.2.2"}
-            :inherited {:scm {:dir ".."}
+            :inherited {:url "https://github.com/wkf/aviary"
+                        :scm {:name "git"
+                              :url "https://github.com/wkf/aviary"}
+                        :license {:name "Eclipse Public License"
+                                  :url "http://www.eclipse.org/legal/epl-v10.html"}
                         :test-paths ["src/test"]
                         :source-paths ["src/main"]}}
   :release-tasks [["vcs" "assert-committed"]
-                  ["modules"
-                   "change"
-                   "version"
-                   "leiningen.release/bump-version"
-                   "release"]
-                  ["change"
-                   "version"
-                   "leiningen.release/bump-version"
-                   "release"]
+                  ["modules" "test"]
+                  ["modules" "change" "version" "leiningen.release/bump-version" "release"]
+                  ["change" "version" "leiningen.release/bump-version" "release"]
                   ["vcs" "commit"]
                   ["vcs" "tag"]
                   ["modules" "deploy" "clojars"]
                   ["deploy" "clojars"]
-                  ["modules"
-                   "change"
-                   "version"
-                   "leiningen.release/bump-version"]
-                  ["change"
-                   "version"
-                   "leiningen.release/bump-version"]
+                  ["modules" "change" "version" "leiningen.release/bump-version"]
+                  ["change" "version" "leiningen.release/bump-version"]
                   ["vcs" "commit"]
                   ["vcs" "push"]])

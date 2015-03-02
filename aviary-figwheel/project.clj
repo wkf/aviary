@@ -1,8 +1,5 @@
 (defproject aviary/aviary-figwheel "0.1.2-SNAPSHOT"
   :description "Aviary figwheel module for compiling clojurescript and reloading assets."
-  :url "https://github.com/wkf/aviary"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
   :test-paths ["src/test/clj"]
   :source-paths ["src/main/clj"
                  "src/main/cljs"]
