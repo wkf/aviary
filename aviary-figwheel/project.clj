@@ -1,4 +1,4 @@
-(defproject aviary/aviary-figwheel "0.1.3"
+(defproject aviary/aviary-figwheel "0.1.4-SNAPSHOT"
   :description "Aviary figwheel module for compiling clojurescript and reloading assets."
   :test-paths ["src/test/clj"]
   :source-paths ["src/main/clj"

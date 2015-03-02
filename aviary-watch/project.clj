@@ -1,4 +1,4 @@
-(defproject aviary/aviary-watch "0.1.3"
+(defproject aviary/aviary-watch "0.1.4-SNAPSHOT"
   :description "Aviary watch module (built with hawk)."
   :dependencies [[org.clojure/clojure _]
                  [org.clojure/tools.namespace "0.2.9"]
