@@ -2,6 +2,7 @@
   :description "Static site builder with enough room to fly."
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [aviary/aviary-core _]
+                 [aviary/aviary-ship _]
                  [aviary/aviary-watch _]
                  [aviary/aviary-serve _]
                  [aviary/aviary-figwheel _]
