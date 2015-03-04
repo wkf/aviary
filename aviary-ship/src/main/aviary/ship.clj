@@ -1,3 +1,5 @@
-(ns aviary.ship)
+(ns aviary.ship
+  (:require [aviary.ship.git]
+            [aviary.ship.core :as core]))
 
-(defmulti ship :type)
+(def ship core/ship)

@@ -1,5 +1,5 @@
 (ns aviary.ship.git
-  (:require [aviary.ship :refer [ship]]
+  (:require [aviary.ship.core :refer [ship]]
             [aviary.console :as console]
             [clojure.string :as str]
             [clojure.java.io :as io]
