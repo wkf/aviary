@@ -83,7 +83,7 @@
                        "contact" #(str "other content")
                        "help/page.html" #(str "some page content")})}]
       (export
-        {:base temp
+        {:path temp
          :resources ["assets"]
          :manifests manifests})
       (is (dir-contains? temp files)

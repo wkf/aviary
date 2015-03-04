@@ -35,17 +35,17 @@
 
    Transform bare paths to a folder with and index file with
    the specified extension."
-  [{:keys [base resources manifests clean?]}]
+  [{:keys [path resources manifests clean?]}]
   (when-not (= clean? false)
-    (clean base))
+    (clean path))
   (when resources
     (doseq [resource resources]
-      (merge (io/resource resource) base)))
+      (merge (io/resource resource) path)))
   (when manifests
     (doseq [[extension
              manifest] manifests
-            [path f] (manifest)]
+            [path' f] (manifest)]
       (let [file (io/file
-                   base (normalize-path path extension))
+                   path (normalize-path path' extension))
             content (f)]
         (FileUtils/writeStringToFile file content "UTF-8")))))
