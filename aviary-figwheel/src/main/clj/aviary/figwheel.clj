@@ -18,21 +18,30 @@
                    line))))
          args))
 
+(defn- transform-cljs-builder-out-line [line]
+  (condp re-matches (decolor-string line)
+    #"Compiling \"(.*)\" from (\[.*\]).*" :>>
+    (fn [matches]
+      (console/info :cljs/build (matches 2) str))
+    #"notifying browser that file changed:  (.*)" :>>
+    (fn [matches]
+      (console/info :cljs/reload (matches 1) str))
+    #"Successfully compiled \"(.*)\" in (.*) seconds\." :>>
+    (fn [matches]
+      (console/info :cljs/build (str (matches 1) " [" (matches 2) "s]") str))
+    line))
+
 (defn make-figwheel-builder [state]
   (-> state
       figwheel-auto/builder
       cljs/make-conditional-builder
       (transform-out-lines
-        (fn [line]
-          (condp re-matches (decolor-string line)
-            #"Compiling .*" :>> (constantly nil)
-            #"notifying browser that file changed:  (.*)" :>>
-            (fn [matches]
-              (console/info :cljs/reload (matches 1) str))
-            #"Successfully compiled \"(.*)\" in (.*) seconds\." :>>
-            (fn [matches]
-              (console/info :cljs/build (matches 1) str))
-            line)))))
+        transform-cljs-builder-out-line)))
+
+(defn build-cljs-once [& args]
+  (apply (-> cljs/build-once
+             (transform-out-lines
+               transform-cljs-builder-out-line)) args))
 
 (system/defcomponent serve [config]
   ([_] (start-figwheel-server (assoc config :server-port (:port config))))
@@ -49,7 +58,7 @@
                  (builder ctx))}]))
 
 (defn build-cljs [config]
-  (cljs/build-once
+  (build-cljs-once
     (cljs/prep-build config)))
 
 (defn reload-css [fw files]
