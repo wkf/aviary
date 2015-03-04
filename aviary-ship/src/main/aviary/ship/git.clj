@@ -25,10 +25,6 @@
 
 (defn git [& args]
   (let [{:keys [out err exit]} (apply sh "git" args)]
-    (when (not= exit 0)
-      (console/error :git/error (str args
-                                     " " [:out out]
-                                     " " [:err err])))
     (when (= exit 0) out)))
 
 (defn root-dir
