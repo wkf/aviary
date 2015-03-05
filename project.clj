@@ -8,7 +8,8 @@
                  [aviary/aviary-figwheel _]
                  [aviary/aviary-filesystem _]]
   :plugins [[lein-modules "0.3.10"]]
-  :modules {:versions {aviary :version
+  :modules {:subprocess false
+            :versions {aviary :version
                        aviary/figwheel "0.2.5"
                        aviary/figwheel-sidecar "0.2.5"
                        org.clojure/clojure "1.6.0"
@@ -23,7 +24,6 @@
                         :test-paths ["src/test"]
                         :source-paths ["src/main"]}}
   :release-tasks [["vcs" "assert-committed"]
-                  ["modules" "test"]
                   ["modules" "change" "version" "leiningen.release/bump-version" "release"]
                   ["change" "version" "leiningen.release/bump-version" "release"]
                   ["vcs" "commit"]
