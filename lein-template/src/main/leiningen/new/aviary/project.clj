@@ -17,7 +17,7 @@
                                   "src/dev/cljs"]
                    :dependencies [[weasel "0.5.0"]
                                   [com.cemerick/piggieback "0.1.5"]]
-                   :repl-options {:init ({{namespace}}.dev/start-dev)
+                   :repl-options {:init ({{namespace}}.dev/start)
                                   :init-ns {{namespace}}.dev
                                   :nrepl-middleware
                                   [cemerick.piggieback/wrap-cljs-repl]}}}
