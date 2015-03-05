@@ -1,4 +1,4 @@
-(defproject aviary/aviary-serve "0.1.6"
+(defproject aviary/aviary-serve "0.1.7-SNAPSHOT"
   :description "Aviary module for serving content with http-kit."
   :dependencies [[org.clojure/clojure _]
                  [aviary/aviary-core _]
