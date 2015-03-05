@@ -1,4 +1,4 @@
-(defproject aviary/aviary-ship "0.1.9"
+(defproject aviary/aviary-ship "0.1.10-SNAPSHOT"
   :description "Aviary module to help ship your app."
   :dependencies [[org.clojure/clojure _]
                  [aviary/aviary-core _]]
