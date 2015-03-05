@@ -1,4 +1,4 @@
-(defproject aviary/aviary-filesystem "0.1.9-SNAPSHOT"
+(defproject aviary/aviary-filesystem "0.1.9"
   :description "Aviary module for manipulating the filesystem."
   :dependencies [[org.clojure/clojure _]
                  [aviary/aviary-core _]
