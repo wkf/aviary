@@ -1,4 +1,4 @@
-(defproject aviary/aviary-core "0.1.8"
+(defproject aviary/aviary-core "0.1.9-SNAPSHOT"
   :description "Aviary core module."
   :dependencies [[org.clojure/clojure _]
                  [org.clojure/core.async _]
