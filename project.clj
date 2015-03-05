@@ -8,8 +8,7 @@
                  [aviary/aviary-figwheel _]
                  [aviary/aviary-filesystem _]]
   :plugins [[lein-modules "0.3.10"]]
-  :modules {:subprocess false
-            :versions {aviary :version
+  :modules {:versions {aviary :version
                        aviary/figwheel "0.2.5"
                        aviary/figwheel-sidecar "0.2.5"
                        org.clojure/clojure "1.6.0"
