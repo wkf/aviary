@@ -1,4 +1,4 @@
-(defproject aviary "0.1.8-SNAPSHOT"
+(defproject aviary "0.1.8"
   :description "Static site builder with enough room to fly."
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [aviary/aviary-core _]
