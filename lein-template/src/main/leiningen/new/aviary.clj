@@ -22,4 +22,4 @@
              ["src/main/clj/{{path}}/site.clj" (render "src/main/clj/aviary/site.clj" data)]
              ["src/main/clj/{{path}}/style.clj" (render "src/main/clj/aviary/style.clj" data)]
              ["src/main/clj/{{path}}/markup.clj" (render "src/main/clj/aviary/markup.clj" data)]
-             ["src/main/cljs/{{path}}/site.cljs" (render "src/main/clj/aviary/site.cljs" data)])))
+             ["src/main/cljs/{{path}}/site.cljs" (render "src/main/cljs/aviary/site.cljs" data)])))
