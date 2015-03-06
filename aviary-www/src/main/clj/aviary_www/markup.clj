@@ -5,6 +5,7 @@
 
 (def defaults
   {:title "Aviary"
+   :url "https://github.com/wkf/aviary"
    :styles ["css/out/screen.css"
             "//fonts.googleapis.com/css?family=Raleway:500"
             "//fonts.googleapis.com/css?family=Crimson+Text"
@@ -49,7 +50,7 @@
        [:h1]]
       [:main]]])
 
-  [{:keys [title scripts requires styles]} content]
+  [{:keys [title url scripts requires styles]} content]
 
   [:title] (html/content title)
   [:head] (html/prepend
@@ -60,6 +61,7 @@
               #(html [:script {:type "text/javascript" :src %}]) scripts)
             (map
               #(html [:script {:type "text/javascript"} (str "goog.require('" % "')")]) requires))
+  [:a (html/has [:img.ribbon])] (html/set-attr :href url)
   [:header :h1] (html/content title)
   [:main] (html/content content))
 
