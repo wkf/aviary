@@ -14,9 +14,12 @@
               :namespace (sanitize-ns name)}]
     (->files data
              ["README.md" (render "README.md" data)]
+             ["LICENSE" (render "LICENSE" data)]
              [".hgignore" (render "hgignore" data)]
              [".gitignore" (render "gitignore" data)]
              ["project.clj" (render "project.clj" data)]
+             ["resources/assets/.gitkeep" (render "resources/assets/.gitkeep" data)]
+             ["resources/public/.gitkeep" (render "resources/public/.gitkeep" data)]
              ["src/dev/clj/{{path}}/dev.clj" (render "src/dev/clj/aviary/dev.clj" data)]
              ["src/dev/cljs/{{path}}/dev.cljs" (render "src/dev/cljs/aviary/dev.cljs" data)]
              ["src/main/clj/{{path}}/site.clj" (render "src/main/clj/aviary/site.clj" data)]

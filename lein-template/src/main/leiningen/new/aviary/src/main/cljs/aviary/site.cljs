@@ -1,4 +1,4 @@
-(ns {{namespace}}.core)
+(ns {{namespace}}.site)
 
 (defonce site (atom {:running? false}))
 
