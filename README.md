@@ -1,6 +1,6 @@
 # Aviary
 
-[![Join the chat at https://gitter.im/wkf/aviary](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/wkf/aviary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/wkf/aviary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 A Clojure library designed to improve your development experience without putting you in a cage. I created it originally to help generate static sites, but it has grown into something with wider application.
 
@@ -16,6 +16,8 @@ Some (potentially) interesting Aviary features:
 * Uniform log messages
 * A name related to birds
 
+***
+
 ## Installation
 
 To install, add the following dependency to your `project.clj` file:
@@ -27,6 +29,7 @@ Alternatively, since aviary is split into modules, you could install just the on
     [aviary/aviary-core "0.1.3"]
     [aviary/aviary-watch "0.1.3"]
 
+***
 
 ## Usage
 
@@ -141,10 +144,13 @@ On the client, connect to the figwheel server to receive update notifications.
        ;; since figwheel isn't serving static assets, it's necessary to specify the figwheel websocket url
        :websocket-url "ws://localhost:3001/figwheel-ws"})
 
+***
 
 ## API
 
 For now, the best API documentation is the docstrings in the source code.
+
+***
 
 ## Tests
 
@@ -152,9 +158,10 @@ To run the tests for all Aviary modules, use lein modules:
 
     lein modules test
 
+***
+
 ## License
 
-Copyright (c) 2015 Will Farrell
+Copyright (c) 2015 [Will Farrell](http://willfarrell.is)
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
