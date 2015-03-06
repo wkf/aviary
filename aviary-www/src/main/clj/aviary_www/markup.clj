@@ -61,7 +61,7 @@
               #(html [:script {:type "text/javascript" :src %}]) scripts)
             (map
               #(html [:script {:type "text/javascript"} (str "goog.require('" % "')")]) requires))
-  [:a (html/has [:img.ribbon])] (html/set-attr :href url)
+  [[:a (html/has [:img.ribbon])]] (html/set-attr :href url)
   [:header :h1] (html/content title)
   [:main] (html/content content))
 
