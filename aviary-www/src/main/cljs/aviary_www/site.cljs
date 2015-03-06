@@ -38,6 +38,10 @@
                  (dom/getElementsByTagNameAndClass "header") "0")
         header-height (aget
                         (style/getSize header) "height")]
+    ;; make the birds fly
+    (style/setStyle nav
+                    "background-position" (str (/ top 5) "px "
+                                               (/ top 5) "px"))
     ((if (>= top (- header-height nav-height))
        classes/add
        classes/remove) nav "active")))
