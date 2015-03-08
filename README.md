@@ -20,7 +20,11 @@ Some (potentially) interesting Aviary features:
 
 ## Installation
 
-To install, add the following dependency to your `project.clj` file:
+To quickly create a new project with aviary installed, use `aviary/lein-template` from the command line:
+
+    lein new aviary <project-name>
+
+To install aviary in an existing project, add the following dependency to your `project.clj` file:
 
     [aviary "0.1.3"]
 
