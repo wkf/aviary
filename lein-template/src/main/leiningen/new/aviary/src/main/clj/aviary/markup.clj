@@ -5,8 +5,7 @@
   {:title "Aviary"
    :styles ["css/out/screen.css"
             "//fonts.googleapis.com/css?family=Raleway:500"
-            "//fonts.googleapis.com/css?family=Crimson+Text"
-            "//fonts.googleapis.com/css?family=Inconsolata"]
+            "//fonts.googleapis.com/css?family=Crimson+Text"]
    :scripts ["js/out/main.js"]})
 
 (defn html5 [& nodes]
@@ -18,12 +17,10 @@
   (html5
     [:html
      [:head
-      [:title]
-      [:link {:rel "icon" :type "image/png" :href "/favicon-32x32.png" :sizes "32x32"}]
-      [:link {:rel "icon" :type "image/png" :href "/favicon-96x96.png" :sizes "96x96"}]
-      [:link {:rel "icon" :type "image/png" :href "/favicon-16x16.png" :sizes "16x16"}]]
+      [:title]]
      [:body
       [:header
+       [:img.logo {:src "aviary-white.svg"}]
        [:h1]]
       [:main]]])
 
@@ -41,7 +38,16 @@
   [:header :h1] (html/content title)
   [:main] (html/content content))
 
+(defn main []
+  (html
+    [:h2 "Spread Your Wings"]
+    [:p
+     "You just created a new project with Aviary. Great job. Seriously, nice."]
+    [:p
+     "Anyway, looking for some help? For more documentation, "
+     [:a {:href "https://wkf.github.io/aviary/"}
+      "click right here."]]))
+
 (defn manifest [config]
   (let [config (merge defaults config)]
-    {"" #(render
-           (page config "Hello World!"))}))
+    {"" #(render (page config (main)))}))
