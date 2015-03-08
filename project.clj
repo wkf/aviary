@@ -8,7 +8,12 @@
                  [aviary/aviary-figwheel _]
                  [aviary/aviary-filesystem _]]
   :plugins [[lein-modules "0.3.10"]]
-  :modules {:subprocess false
+  :modules {:dirs ["aviary-core"
+                   "aviary-ship"
+                   "aviary-watch"
+                   "aviary-serve"
+                   "aviary-figwheel"
+                   "aviary-filesystem"]
             :versions {aviary :version
                        aviary/figwheel "0.2.5"
                        aviary/figwheel-sidecar "0.2.5"
@@ -22,14 +27,19 @@
                         :license {:name "Eclipse Public License"
                                   :url "http://www.eclipse.org/legal/epl-v10.html"}
                         :test-paths ["src/test"]
-                        :source-paths ["src/main"]}}
+                        :source-paths ["src/main"]}
+            :subprocess false}
   :release-tasks [["vcs" "assert-committed"]
+                  ["modules" "test"]
+                  ["modules" ":dirs" "lein-template" "change" "version" "leiningen.release/bump-version" "release"]
                   ["modules" "change" "version" "leiningen.release/bump-version" "release"]
                   ["change" "version" "leiningen.release/bump-version" "release"]
                   ["vcs" "commit"]
                   ["vcs" "tag"]
+                  ["modules" ":dirs" "lein-template" "deploy" "clojars"]
                   ["modules" "deploy" "clojars"]
                   ["deploy" "clojars"]
+                  ["modules" ":dirs" "lein-template" "change" "version" "leiningen.release/bump-version"]
                   ["modules" "change" "version" "leiningen.release/bump-version"]
                   ["change" "version" "leiningen.release/bump-version"]
                   ["modules" "install"]
