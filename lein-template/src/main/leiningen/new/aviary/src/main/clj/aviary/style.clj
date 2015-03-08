@@ -3,10 +3,7 @@
             [garden.units :refer [px em]]
             [garden.color :as color :refer [rgb]]))
 
-(def black (rgb 0 0 0 ))
-
 (def purple (rgb 152 90 163))
-
 (def white (rgb 255 255 255))
 
 (def defaults
@@ -41,13 +38,37 @@
    [:h3
     {:color purple
      :font-size (px 22)}]
-   [:code
-    {:font-size (px 18)
-     :font-family "'Inconsolata', monospace"}]
    ["::selection" {:color white
                    :background purple}]])
 
-(def main [])
+(def main
+  [[:header {:width "100%"
+             :overflow :hidden
+             :background {:color purple
+                          :image "url(\"../../aviary-tile.jpg\")"}
+             :min-height (px 400)
+             :padding-top (px 50)
+             :margin-bottom (px 120)}
+    [:img :h1 {:display :table
+               :margin {:left :auto
+                        :right :auto}}]
+    [:img {:width (px 196)}]
+    [:h1 {:font-kerning :normal
+          :letter-spacing (px 5)
+          :text-transform :uppercase}]]
+   [:main {:width "100%"
+           :padding {:left "16.5%"
+                     :right "16.5%"
+                     :bottom (px 50)}}]
+
+   [:a {:color purple
+        :border-bottom {:width (px 2)
+                        :style :solid
+                        :color white}
+        :transition "border 250ms"}
+    [:&:hover {:border-bottom {:width (px 2)
+                               :style :solid
+                               :color purple}}]]])
 
 (def screen
   (concat defaults fonts main))

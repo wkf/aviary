@@ -10,7 +10,7 @@
                  "src/main/cljs"]
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2850"]
-                 [aviary "0.1.6"]
+                 [aviary "{{aviary-version}}"]
                  [enlive "1.1.5"]
                  [garden "1.2.5"]]
   :profiles {:dev {:source-paths ["src/dev/clj"
