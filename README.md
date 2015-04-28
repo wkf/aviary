@@ -55,7 +55,7 @@ Then define the system with the `defsystem` macro:
 
 It's also possible to name system components using the `defsystem*` macro. This is functionally equivalent to the above example:
 
-    (defsystem dev
+    (defsystem* dev
        :watch (watch [(watch-clj ["src"])]))
 
 Now you can use the `start` and `stop` functions to control the lifecycle of the system (and all its components).
