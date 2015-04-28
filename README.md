@@ -74,8 +74,8 @@ See the API documentation for more details.
 
 Now let's see a more complicated example. This system will reload namespaces with `aviary.watch`, rebuild cljs with `aviary.figwheel`, and serve development assets with `aviary.serve`. Figwheel is also used to reload the browser when files change.
 
-    (require '[example.style :as :style]
-             '[example.markup :as :markup]
+    (require '[example.style :as style]
+             '[example.markup :as markup]
              '[aviary.system :refer [defsystem* start stop]
              '[aviary.watch :refer [watch] :as w]
              '[aviary.serve :refer [serve]]
