@@ -34,8 +34,8 @@
    Happy networking."
   (:require [clojure.core.async :as async])
   (:import (clojure.lang Fn
-                         Sequential
-                         Associative)))
+                         IPersistentMap
+                         IPersistentVector)))
 
 (defprotocol Network
   (wire [this i o] "Recursively connects channels to nodes."))
@@ -44,7 +44,7 @@
   Fn
   (wire [this i o] (this i o))
 
-  Sequential
+  IPersistentVector
   (wire [this i o]
     (async/pipe
       (reduce
@@ -56,7 +56,7 @@
             o')) i this)
       o))
 
-  Associative
+  IPersistentMap
   (wire [this i o]
     (let [i* (async/mult i)
           o* (async/mix o)]
