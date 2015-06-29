@@ -1,4 +1,4 @@
-(defproject aviary/aviary-www "0.1.3-SNAPSHOT"
+(defproject aviary/aviary-www "0.1.3"
   :description "GitHub pages site for Aviary."
   :url "https://github.com/wkf/aviary"
   :scm {:name "git"
