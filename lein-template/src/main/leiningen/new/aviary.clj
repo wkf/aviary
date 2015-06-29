@@ -54,7 +54,7 @@
              ["src/main/clj/{{path}}/style.clj" (render "src/main/clj/aviary/style.clj" data)]
              ["src/main/clj/{{path}}/markup.clj" (render "src/main/clj/aviary/markup.clj" data)]
              ["src/main/cljs/{{path}}/site.cljs" (render "src/main/cljs/aviary/site.cljs" data)])
-    (mapv #(apply unpack (:path data) %)
+    (mapv #(apply unpack (:name data) %)
           [["resources/assets/favicon.ico" "resources/assets/favicon.ico"]
            ["resources/assets/aviary-tile.jpg" "resources/assets/aviary-tile.jpg"]
            ["resources/assets/aviary-white.svg" "resources/assets/aviary-white.svg"]])))
