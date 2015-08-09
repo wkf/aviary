@@ -1,4 +1,4 @@
-(defproject aviary/lein-template "0.1.17-SNAPSHOT"
+(defproject aviary/lein-template "0.1.17"
   :description "A Leiningen template for a basic Aviary project."
   :url "https://github.com/wkf/aviary"
   :scm {:name "git"
