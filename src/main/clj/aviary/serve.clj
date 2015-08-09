@@ -1,6 +1,6 @@
 (ns aviary.serve
   (:require [aviary.system :as system]
-            [aviary.console :as console]
+            [taoensso.timbre :refer [info warn error]]
             [bidi.ring :as bidi]
             [bidi.bidi :refer [compile-route]]
             [ring.util.response :as ring]
@@ -48,9 +48,9 @@
           path (:uri req)
           code (or (:status res) 404)]
       (cond
-        (<= code 299) (console/info key (format "[%s] %s" code path))
-        (<= code 399) (console/warn key (format "[%s] %s" code path))
-        (<= code 599) (console/error key (format "[%s] %s" code path)))
+        (<= code 299) (info key (format "[%s] %s" code path))
+        (<= code 399) (warn key (format "[%s] %s" code path))
+        (<= code 599) (error key (format "[%s] %s" code path)))
       res)))
 
 (defn- make-static-handler [config]

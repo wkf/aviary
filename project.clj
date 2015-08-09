@@ -18,7 +18,8 @@
                  [hawk "0.2.5"]
                  [ring "1.3.2"]
                  [http-kit "2.1.18"]
-                 [bidi "1.18.0" :exclusions [org.clojure/clojure]]]
+                 [bidi "1.18.0" :exclusions [org.clojure/clojure]]
+                 [com.taoensso/timbre "4.1.0"]]
   :plugins [[lein-modules "0.3.10"]]
   :modules {:subprocess false}
   :release-tasks [["vcs" "assert-committed"]

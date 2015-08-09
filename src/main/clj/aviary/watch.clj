@@ -1,7 +1,7 @@
 (ns aviary.watch
   (:require [aviary.system :as system]
             [aviary.network :as network]
-            [aviary.console :as console]
+            [taoensso.timbre :refer [info]]
             [hawk.core :as hawk]
             [clojure.core.async :as async]
             [clojure.tools.namespace.file :refer [read-file-ns-decl clojure-file?]]))
@@ -28,7 +28,7 @@
      :handler (fn [_ e]
                 (when-let [ns' (-> e :file reload-file)]
                   ;; TODO: replace these with a more uniform logging function
-                  (console/info :clj/reload ns')
+                  (info :clj/reload ns')
                   (f ns')))}]))
 
 (system/defcomponent watch*

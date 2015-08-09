@@ -1,6 +1,6 @@
 (ns aviary.ship.git
   (:require [aviary.ship.core :refer [ship]]
-            [aviary.console :as console]
+            [taoensso.timbre :refer [info]]
             [clojure.string :as str]
             [clojure.java.io :as io]
             [clojure.java.shell :refer [sh]]))
@@ -13,8 +13,7 @@
 (defn- sub-path
   "Subtract one path from another."
   [s s']
-  (-> (.replace s s' "")
-      (.replaceAll "^/" "")))
+  (.replaceAll (.replace s s' "") "^/" ""))
 
 (defn- add-path
   "Combine two paths."
@@ -25,7 +24,7 @@
 
 (defn git [& args]
   (let [{:keys [out err exit]} (apply sh "git" args)]
-    (when (= exit 0) out)))
+    (when (zero? exit) out)))
 
 (defn root-dir
   "Get the git root directory path."
@@ -38,7 +37,7 @@
 
 (defn delete-branch!
   [branch]
-  (console/info :git/delete-branch branch)
+  (info :git/delete-branch branch)
   (if-not (branch-exists? branch)
     true
     (git "branch" "-D" branch)))
@@ -46,7 +45,7 @@
 (defn create-branch!
   [branch & [prefix]]
   (let [prefix (when-not (= prefix "") prefix)]
-    (console/info :git/create-branch (str branch " " prefix))
+    (info :git/create-branch (str branch " " prefix))
     (if-not prefix
       (git "branch" branch)
       (git "subtree" "split" "--prefix" prefix "--branch" branch
@@ -55,7 +54,7 @@
 (defn push-branch!
   [branch & [remote]]
   (let [remote (or remote "origin")]
-    (console/info
+    (info
       :git/push-branch (str branch " " remote))
     (git "push" remote branch "--force")))
 

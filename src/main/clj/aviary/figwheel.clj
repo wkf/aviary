@@ -1,34 +1,35 @@
 (ns aviary.figwheel
   (:require [aviary.system :as system]
             [aviary.network :as network]
-            [aviary.console :refer [decolor-string transform-out-lines] :as console]
+            [aviary.console :refer [decolor-string transform-out-lines]]
+            [taoensso.timbre :refer [info]]
             [clojure.core.async :as async]
             [clojurescript-build.auto :as cljs]
             [figwheel-sidecar.core :as figwheel]
             [figwheel-sidecar.auto-builder :as figwheel-auto]))
 
 (defn start-figwheel-server [& args]
-  (apply (-> figwheel/start-server
-             (transform-out-lines
-               (fn [line]
-                 (condp re-matches (decolor-string line)
-                   #"Figwheel: Starting server at (.*)" :>>
-                   (fn [matches]
-                     (console/info :figwheel/start (matches 1) str))
-                   line))))
+  (apply (transform-out-lines
+           figwheel/start-server
+           (fn [line]
+             (condp re-matches (decolor-string line)
+               #"Figwheel: Starting server at (.*)" :>>
+               (fn [matches]
+                 (info :figwheel/start (matches 1)))
+               line)))
          args))
 
 (defn- transform-cljs-builder-out-line [line]
   (condp re-matches (decolor-string line)
     #"Compiling \"(.*)\" from (\[.*\]).*" :>>
     (fn [matches]
-      (console/info :cljs/build (matches 2) str))
+      (info :cljs/build (matches 2)))
     #"notifying browser that file changed:  (.*)" :>>
     (fn [matches]
-      (console/info :cljs/reload (matches 1) str))
+      (info :cljs/reload (matches 1)))
     #"Successfully compiled \"(.*)\" in (.*) seconds\." :>>
     (fn [matches]
-      (console/info :cljs/build (str (matches 1) " [" (matches 2) "s]") str))
+      (info :cljs/build (str (matches 1) " [" (matches 2) "s]")))
     line))
 
 (defn make-figwheel-builder [state]
@@ -39,9 +40,9 @@
         transform-cljs-builder-out-line)))
 
 (defn build-cljs-once [& args]
-  (apply (-> cljs/build-once
-             (transform-out-lines
-               transform-cljs-builder-out-line)) args))
+  (apply (transform-out-lines
+           cljs/build-once
+           transform-cljs-builder-out-line) args))
 
 (system/defcomponent serve [config]
   ([_] (start-figwheel-server (assoc config :server-port (:port config))))
@@ -49,7 +50,7 @@
   ([_ server] (figwheel/stop-server server)))
 
 (defn watch-cljs [fw config]
-  (let [build (-> config cljs/prep-build)
+  (let [build (cljs/prep-build config)
         builder (-> fw :state make-figwheel-builder)]
     [{:paths (-> config :source-paths)
       :context (fn [_]

@@ -1,30 +1,34 @@
 (ns aviary.console
-  (:require [clojure.string :as str])
+  (:require [clojure.string :as str]
+            [taoensso.timbre :as timbre]
+            [taoensso.timbre.appenders.core :as appenders])
   (:import (java.io PipedReader
                     PipedWriter
                     BufferedReader)))
+(def colors
+  {:info :green
+   :warn :yellow
+   :error :red
+   :fatal :purple
+   :report :blue})
 
-(def reset "\u001b[0m")
-(def bold "\u001b[1m")
+(defn- color-output-by-level [{:keys [level] :as data}]
+  (timbre/default-output-fn
+    (update-in data [:vargs_]
+      #(->> %
+         deref
+         (mapv
+           (partial timbre/color-str (colors level)))
+         delay))))
 
-(def default "\u001b[39m")
-(def white "\u001b[37m")
-(def black "\u001b[30m")
-(def red "\u001b[31m")
-(def green "\u001b[32m")
-(def blue "\u001b[34m")
-(def yellow "\u001b[33m")
-
-(def color238 "\u001b[38;5;238m")
-(def color240 "\u001b[38;5;240m")
-(def color251 "\u001b[38;5;251m")
-
-(def logger
-  "An agent to serialize log output from asynchronous producers."
-  (agent nil))
-
-(defn- print-line [line]
-  (send-off logger #(println %2) line))
+(timbre/merge-config!
+  {:appenders
+   {:println
+    {:async? true
+     :output-fn color-output-by-level}
+    :spit
+    (appenders/spit-appender {:async? true
+                              :fname "aviary.log"})}})
 
 (defn decolor-string
   "Remove ANSI color sequences from string"
@@ -41,9 +45,10 @@
                    (let [in (-> out PipedReader. BufferedReader.)]
                      (deliver ready true)
                      (dorun
-                       (->> (line-seq in)
-                            (take-while identity)
-                            (map #(some-> % g print-line))))
+                       (->>
+                         (line-seq in)
+                         (take-while identity)
+                         (map #(some-> % g))))
                      (.close in)))
           ready? @ready
           result (binding [*out* out] (apply f args))]
@@ -52,29 +57,3 @@
         .close)
       @reader
       result)))
-
-(defn- now []
-  (-> "MM/dd/yyyy HH:mm:ss"
-      (java.text.SimpleDateFormat.)
-      (.format
-        (java.util.Date.))))
-
-(defn log
-  ([k message]
-   (log k message default))
-  ([k message color]
-   (log k message color nil))
-  ([k message color f]
-   (let [message' (str color238 (now) " "
-                       color k
-                       color238 " -" reset " " message)]
-     ((or f print-line) message'))))
-
-(defn info [k message & [f]]
-  (log k message green f))
-
-(defn warn [k message & [f]]
-  (log k message yellow f))
-
-(defn error [k message & [f]]
-  (log k message red f))
