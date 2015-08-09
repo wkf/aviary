@@ -22,22 +22,11 @@ Some (potentially) interesting Aviary features:
 
 To quickly create a new project with aviary installed, use `aviary/lein-template` from the command line:
 
-```sh
-lein new aviary <project-name>
-```
+    lein new aviary <project-name>
 
 To install aviary in an existing project, add the following dependency to your `project.clj` file:
 
-```clojure
-[aviary "0.1.3"]
-```
-
-Alternatively, since aviary is split into modules, you could install just the ones you need. For example, if you were only using aviary to reload clj files as you make changes, you could include just the `aviary-core` and `aviary-watch` modules:
-
-```clojure
-[aviary/aviary-core "0.1.3"]
-[aviary/aviary-watch "0.1.3"]
-```
+[![Clojars Project](http://clojars.org/aviary/latest-version.svg)](http://clojars.org/aviary)
 
 ---------
 
@@ -178,12 +167,9 @@ For now, the best API documentation is the docstrings in the source code.
 
 ## Tests
 
-To run the tests for all Aviary modules, use lein modules:
+To run the tests for  Aviary, use lein:
 
-lein modules test
-
----------
-
+    lein test
 ## License
 
 Copyright (c) 2015 [Will Farrell](http://willfarrell.is)
