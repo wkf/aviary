@@ -7,5 +7,5 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :test-paths ["src/test"]
   :source-paths ["src/main"]
-  :plugins [[lein-modules "0.3.10"]]
+  :plugins [[lein-modules "0.3.11"]]
   :eval-in-leiningen true)

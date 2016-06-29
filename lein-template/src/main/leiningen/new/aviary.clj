@@ -6,21 +6,6 @@
 
 (def render (renderer "aviary"))
 
-(defn unpack
-  "Modified from:
-   https://github.com/tailrecursion/hlisp-template/blob/65b89bd257eca86c4ce76b82066a0b059323cdfb/src/leiningen/new/hlisp.clj"
-  [name-proj name-in name-out]
-  (let [p  (str/join "/" ["leiningen" "new" "aviary" name-in])
-        i  (io/resource p)
-        o  (-> (io/file
-                 (System/getProperty "leiningen.original.pwd"))
-               (io/file name-proj name-out))
-        _  (io/make-parents o)
-        is (io/input-stream i)
-        os (io/output-stream o)]
-    (io/copy is os)
-    (.flush os)))
-
 (defn load-props
   "Copied from:
    https://github.com/plexus/chestnut/blob/a6c74c8e18e1619f256a4aaf61f6efd8691a85b6/src/leiningen/new/chestnut.clj#L70"
@@ -48,13 +33,9 @@
              [".hgignore" (render "hgignore" data)]
              [".gitignore" (render "gitignore" data)]
              ["project.clj" (render "project.clj" data)]
-             ["src/dev/clj/{{path}}/dev.clj" (render "src/dev/clj/aviary/dev.clj" data)]
-             ["src/dev/cljs/{{path}}/dev.cljs" (render "src/dev/cljs/aviary/dev.cljs" data)]
-             ["src/main/clj/{{path}}/site.clj" (render "src/main/clj/aviary/site.clj" data)]
-             ["src/main/clj/{{path}}/style.clj" (render "src/main/clj/aviary/style.clj" data)]
-             ["src/main/clj/{{path}}/markup.clj" (render "src/main/clj/aviary/markup.clj" data)]
-             ["src/main/cljs/{{path}}/site.cljs" (render "src/main/cljs/aviary/site.cljs" data)])
-    (mapv #(apply unpack (:name data) %)
-          [["resources/assets/favicon.ico" "resources/assets/favicon.ico"]
-           ["resources/assets/aviary-tile.jpg" "resources/assets/aviary-tile.jpg"]
-           ["resources/assets/aviary-white.svg" "resources/assets/aviary-white.svg"]])))
+             ["src/dev/{{path}}/dev.clj" (render "src/dev/aviary/repl.clj" data)]
+             ["src/dev/{{path}}/dev.cljs" (render "src/dev/aviary/repl.cljs" data)]
+             ["src/main/{{path}}/site.clj" (render "src/main/aviary/site.clj" data)]
+             ["src/main/{{path}}/styles.clj" (render "src/main/aviary/styles.clj" data)]
+             ["src/main/{{path}}/markup.clj" (render "src/main/aviary/markup.clj" data)]
+             ["src/main/{{path}}/site.cljs" (render "src/main/aviary/site.cljs" data)])))

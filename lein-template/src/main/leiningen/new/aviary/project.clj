@@ -6,20 +6,16 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :main {{namespace}}.site
-  :source-paths ["src/main/clj"
-                 "src/main/cljs"]
-  :dependencies [[org.clojure/clojure "1.7.0-RC2"]
-                 [org.clojure/clojurescript "0.0-3308"]
-                 [aviary "{{aviary-version}}"]
-                 [enlive "1.1.5"]
-                 [garden "1.2.5"]]
-  :profiles {:dev {:source-paths ["src/dev/clj"
-                                  "src/dev/cljs"]
-                   :dependencies [[weasel "0.5.0"]
-                                  [com.cemerick/piggieback "0.1.5"]]
-                   :repl-options {:init ({{namespace}}.dev/start)
-                                  :init-ns {{namespace}}.dev
-                                  :nrepl-middleware
-                                  [cemerick.piggieback/wrap-cljs-repl]}}}
-  :aliases {"ship" ["run" ":ship"]
-            "export" ["run" ":export"]})
+  :source-paths ["src/main"]
+  :test-paths ["src/test"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha5"]
+                 [org.clojure/clojurescript "1.9.36"]
+                 [aviary "{{aviary-version}}"]]
+  :profiles {:dev {:source-paths ["src/dev"]
+                   :dependencies [[reloaded.repl "0.2.2"]
+                                  [com.cemerick/piggieback "0.2.1"]]
+                   :repl-options {:init (go)
+                                  :init-ns {{namespace}}.repl
+                                  :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}}
+  :aliases {"watch" ["run" "watch"]
+            "export" ["run" "export"]})
