@@ -13,9 +13,7 @@
      [:head
       [:title]]
      [:body
-      [:header
-       [:img.logo {:src "aviary-white.svg"}]
-       [:h1]]
+      [:header [:h1]]
       [:main]]])
 
   [{:keys [title scripts requires styles]} content]
