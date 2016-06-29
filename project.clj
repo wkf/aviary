@@ -19,7 +19,8 @@
                  [garden "1.3.2"]
                  [http-kit "2.1.19"]
                  [prone "1.1.1"]
-                 [commons-io "2.5"]]
+                 [commons-io "2.5"]
+                 [markdown-clj "0.9.89"]]
   :plugins [[lein-modules "0.3.11"]]
   :modules {:subprocess false}
   :release-tasks [["vcs" "assert-committed"]
