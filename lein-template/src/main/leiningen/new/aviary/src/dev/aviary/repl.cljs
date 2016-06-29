@@ -3,4 +3,3 @@
               [aviary.core :as aviary]))
 
 (aviary/setup)
-(enable-console-print!)
