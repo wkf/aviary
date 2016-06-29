@@ -13,4 +13,4 @@
   (concat styles/reset main))
 
 (defn manifest []
-  {"css/out/screen.css" #(css % screen)})
+  {"/css/out/screen.css" #(css % screen)})
